@@ -1,0 +1,33 @@
+<h1>Listing guilds</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Realm</th>
+    <th>Battlegroup</th>
+    <th>Level</th>
+    <th>Side</th>
+    <th>Achievementpoints</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @guilds.each do |guild| %>
+  <tr>
+    <td><%= guild.name %></td>
+    <td><%= guild.realm %></td>
+    <td><%= guild.battlegroup %></td>
+    <td><%= guild.level %></td>
+    <td><%= guild.side %></td>
+    <td><%= guild.achievementPoints %></td>
+    <td><%= link_to 'Show', guild %></td>
+    <td><%= link_to 'Edit', edit_guild_path(guild) %></td>
+    <td><%= link_to 'Destroy', guild, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Guild', new_guild_path %>

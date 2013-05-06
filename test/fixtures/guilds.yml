@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  realm: MyString
+  battlegroup: MyString
+  level: 1
+  side: false
+  achievementPoints: 1
+
+two:
+  name: MyString
+  realm: MyString
+  battlegroup: MyString
+  level: 1
+  side: false
+  achievementPoints: 1

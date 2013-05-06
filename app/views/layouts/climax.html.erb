@@ -36,53 +36,31 @@
   </head>
   <body>
 
-
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Iclimax</a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
     <div class="container">
         <div class="row">
           <div class="span9">
             <%= bootstrap_flash %>
-
-
-
-né <%#= @climax['members'] %>
-
-http://us.battle.net/static-render/us/goldrinn/193/90275265-avatar.jpg
-
-<%# outro = @climax.select {|k,v| k == 'members'} %>
-
-<%# roster = @climax.to_a %>
-
-<%#= cada = @chars['character'] %>
-
-<table class="table table-bordered">
-<%# @chars.each do |k| %>
-  <tr>
-    <td><%#= k %></td>
-  </tr>
-<%# end %>
-</table>
-
-<table class="table table-bordered">
-<% 
-$i = 0
-until $i >= @chars.size do
-%>
-
-	<% @chars[$i]['character'].each do |k,v| %>
-  <tr>
-    <td><%= k %></td>
-    <td><%= v %></td>
-  </tr>
-	<% end %>
-
-<% 
-$i += 1
-end 
-%>
-</table>
-
-
+            <%= yield %>
           </div>
           <div class="span3">
             <div class="well sidebar-nav">
@@ -110,5 +88,3 @@ end
 
   </body>
 </html>
-
-

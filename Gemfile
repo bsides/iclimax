@@ -24,9 +24,14 @@ gem 'jquery-rails'
 gem 'battlenet'
 gem 'httparty'
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 
 group :development do
   gem "better_errors"
+  gem "binding_of_caller"
 end
 
 #gem 'wow_community_api'

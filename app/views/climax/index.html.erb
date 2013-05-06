@@ -71,8 +71,22 @@ until $i >= @chars.size do
 
 	<% @chars[$i]['character'].each do |k,v| %>
   <tr>
-    <td><%= k %></td>
-    <td><%= v %></td>
+  	<%
+    if k == 'spec'
+    	v.each do |key,pair|
+    	%>
+    	
+    	<td><%= key %>: <%= pair %></td>
+    	
+    	<% end
+    else %>
+    
+    	<td><%= k %></td>
+    	<td><%= v %></td>
+
+    <%
+    end
+    %>
   </tr>
 	<% end %>
 

@@ -28,6 +28,10 @@ class ClimaxController < ActionController::Base
 	# return: name, realm, battlegroup, class, race, gender, level, achievementPoints, thumbnail, guild, spec (name, role, backgroundImage, icon, description, order)
 	@@roster = @@api.guild CONFIG_SERVER, CONFIG_GUILDNAME, :fields => "members"
 	@@roster = @@roster['members']
+	
+	@@profile = @@api.character CONFIG_SERVER, 'Exceleite', :fields => "stats,talents"
+	@@profile_stats = @@profile['stats']
+	@@profile_talents = @@profile['talents']
 
 
 	def index
@@ -38,6 +42,24 @@ class ClimaxController < ActionController::Base
 		@icon18	= 'http://media.blizzard.com/wow/icons/18/'
 
 		@chars = @@roster
+
+		respond_to do |format|
+	    format.html # index.html.erb
+	    format.json { render json: @chars }
+	  end
+
+	end
+
+	def apply
+
+		@thumb 	= 'http://us.battle.net/static-render/us/'
+		@icon56	= 'http://media.blizzard.com/wow/icons/36/'
+		@icon36	= 'http://media.blizzard.com/wow/icons/36/'
+		@icon18	= 'http://media.blizzard.com/wow/icons/18/'
+
+		@char = @@profile
+		@stats = @@profile_stats
+		@talents = @@profile_talents
 
 		respond_to do |format|
 	    format.html # index.html.erb

@@ -1,9 +1,42 @@
+<%= form_tag('/climax/apply', :method => "get", :id => "applyid", :remote => true) do %>
+
+<%= label_tag(:lblProcura, "Personagem") %>
+<%= text_field_tag :procura, nil, :class => 'input' %>
+<%= submit_tag("Vai!") %>
+
+<% end %>
+
+<div id="results">Resultado: <%= @theChar %></div>
+
 <table class="table table-bordered">
 	<% @char.each do |k,v| %>
 	<% if k == 'stats' or k == 'talents'; next; end %>
 	<tr>
 		<td><%= k %></td>
-		<td><% if k == 'thumbnail' %><img src="<%= @thumb %><%= v %>" /><% else %><%= v %><% end %></td>
+		<td>
+			<% if k == 'thumbnail' %>
+				<img src="<%= @thumb %><%= v %>" />
+			<% elsif k == 'class' %>
+				<% 
+				classe = case v
+					when 1  then t :warrior
+					when 2  then t :paladin
+				  when 3  then t :hunter
+				  when 4  then t :rogue
+				  when 5  then t :priest
+				  when 6  then t :death_knight
+				  when 7  then t :shaman
+				  when 8  then t :mage
+				  when 9  then t :warlock
+				  when 10 then t :monk
+				  when 11 then t :druid
+				end
+				puts classe
+				%>
+			<% else %>
+			<%= v %>
+			<% end %>
+		</td>
 	</tr>
 	<% end %>
 </table>

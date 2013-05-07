@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+	$('#applyid').bind('ajax:success', function(response) {
+      // response is what gets sent from the controller
+      // so send only the dynamic data and insert it into the DOM
+      alert('uhu');
+      //$('#results').html('<%= escape_javascript(render("results")) %>');
+      $("#results").html(data);
+    })
+})
+

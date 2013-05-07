@@ -29,9 +29,7 @@ class ClimaxController < ActionController::Base
 	@@roster = @@api.guild CONFIG_SERVER, CONFIG_GUILDNAME, :fields => "members"
 	@@roster = @@roster['members']
 	
-	@@profile = @@api.character CONFIG_SERVER, 'Exceleite', :fields => "stats,talents"
-	@@profile_stats = @@profile['stats']
-	@@profile_talents = @@profile['talents']
+
 
 
 	def index
@@ -57,12 +55,23 @@ class ClimaxController < ActionController::Base
 		@icon36	= 'http://media.blizzard.com/wow/icons/36/'
 		@icon18	= 'http://media.blizzard.com/wow/icons/18/'
 
+		#@procura = Climax.procura(params[:procura])
+
+		@theChar = params[:procura].nil? ? 'Pau' : params[:procura]
+		#@theChar = @procura
+
+		@@profile = @@api.character CONFIG_SERVER, @theChar, :fields => "stats,talents"
+		@@profile_stats = @@profile['stats']
+		@@profile_talents = @@profile['talents']
+
+
 		@char = @@profile
 		@stats = @@profile_stats
 		@talents = @@profile_talents
 
 		respond_to do |format|
 	    format.html # index.html.erb
+	    format.js
 	    format.json { render json: @chars }
 	  end
 

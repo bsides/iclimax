@@ -44,25 +44,6 @@
             <%= bootstrap_flash %>
 
 
-
-né <%#= @climax['members'] %>
-
-http://us.battle.net/static-render/us/goldrinn/193/90275265-avatar.jpg
-
-<%# outro = @climax.select {|k,v| k == 'members'} %>
-
-<%# roster = @climax.to_a %>
-
-<%#= cada = @chars['character'] %>
-
-<table class="table table-bordered">
-<%# @chars.each do |k| %>
-  <tr>
-    <td><%#= k %></td>
-  </tr>
-<%# end %>
-</table>
-
 <table class="table table-bordered">
 <% 
 $i = 0
@@ -71,22 +52,29 @@ until $i >= @chars.size do
 
 	<% @chars[$i]['character'].each do |k,v| %>
   <tr>
-  	<%
-    if k == 'spec'
-    	v.each do |key,pair|
-    	%>
-    	
-    	<td><%= key %>: <%= pair %></td>
-    	
-    	<% end
-    else %>
-    
-    	<td><%= k %></td>
-    	<td><%= v %></td>
+  	<% if k == 'spec' %>
 
-    <%
-    end
-    %>
+    <td><%= k %></td>
+    <td><table class="table"><tr>
+    	
+    	<% v.each do |key,pair|	%>
+    	
+    	<% if key == 'icon' %>
+    	<td><img src="<%= @icon36 %><%= pair %>.jpg" /></td>
+    	<% else %>
+    	<td><%= key %>: <%= pair %></td>
+    	<% end %>
+    	
+    	<% end %>
+
+    </tr></table></td>
+
+    <% else %>
+
+    	<td><%= k %></td>
+    	<td><% if k == 'thumbnail' %><img src="<%= @thumb %><%= v %>" /><% else %><%= v %><% end %></td>
+
+    <% end %>
   </tr>
 	<% end %>
 
